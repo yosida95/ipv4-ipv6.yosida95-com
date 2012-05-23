@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <title>Which Version Are Visitors Using IPv4 or IPv6</title>
+    </head>
+    <body style="text-align: center;">
+        <!--
+            ===== READ ME =====
+                I will provide you API for use this widget.  In that API, you can check percentage of version which be used by your website's visitors.
+            ===== READ ME =====
+        -->
+
+        <script type="text/javascript">
+            function which_version_are_visitors_using_ipv4_or_ipv6(data) {
+                var result = document.createElement('strong');
+                result.appendChild(document.createTextNode('You Accessed via ' + ((data.version == 4) ? 'IPv4': 'IPv6')));
+                result.style.fontSize = '3em';
+                document.getElementsByTagName('body')[0].appendChild(result);
+            }
+        </script>
+        <script type="text/javascript" src="{{ request.route_path('get_version') }}?func=which_version_are_visitors_using_ipv4_or_ipv6"></script>
+    </body>
+</html>
